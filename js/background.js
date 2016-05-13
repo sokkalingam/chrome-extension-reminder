@@ -8,7 +8,7 @@ function show() {
   if (notification !== null)
     notification.close();
   notification = new Notification(hour + time[2] + ' ' + period, {
-    icon: '128.png',
+    icon: '../assets/128.png',
     body: localStorage.content
   });
 }
