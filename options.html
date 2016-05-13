@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Break Reminder App!</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="options.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>
+      <img src="64.png" alt="Toast">
+      Break Reminder App!
+    </h1>
+    <h2>Options</h2>
+    <form id="options">
+      <input type="checkbox" name="isActivated" checked>
+      Display a notification every
+      <select name="frequency">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+        <option>25</option>
+        <option>30</option>
+      </select>
+      minute(s).
+      <div>
+        <label>Reminder Message</label>
+        <div><textarea name="content" placeholder="Type your reminder message here!"></textarea></div>
+      </div>
+
+      <div name="daysofweek">
+        <input type="checkbox" name="day" value="0">Sun<br>        
+        <input type="checkbox" name="day" value="1">Mon<br>
+        <input type="checkbox" name="day" value="2">Tue<br>
+        <input type="checkbox" name="day" value="3">Wed<br>
+        <input type="checkbox" name="day" value="4">Thu<br>
+        <input type="checkbox" name="day" value="5">Fri<br>
+        <input type="checkbox" name="day" value="6">Sat<br>
+      </div>
+
+      <div name="startTime">
+        Start Hour: <select name="startHr"></select>
+        Start Min: <select name="startMin"></select>
+      </div>
+
+      <div name="endTime">
+        End Hour: <select name="endHr"></select>
+        End Min: <select name="endMin"></select>
+      </div>
+
+      <div name="result"></div>
+
+    </form>
+  </body>
+</html>
