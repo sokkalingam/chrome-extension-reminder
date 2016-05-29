@@ -1,36 +1,48 @@
 
 <!doctype html>
 <html>
-  <head>
-    <title>Break Reminder App!</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <script src="../js/options.js"></script>
-    <script src="../js/jquery-1.12.2.min.js"></script>
-  </head>
-  <body>
-    <h1>
-      <img src="../assets/64.png" alt="Toast">
-      Break Reminder App!
-    </h1>
+<head>
+  <title>Break Reminder App!</title>
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <script src="../js/options.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery-1.12.2.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="jumbotron">
+      <h1>Break Reminder</h1>
+      <p>You will never forget to take a break again!</p> 
+    </div>
+
     <h2>Options</h2>
-    <form id="options">
-      <input type="checkbox" name="isActivated" checked>
-      Display a notification every
-      <input type="number" name="frequencyMin"> minute(s) and
-      <input type="number" name="frequencySec"> second(s)
-      <div>
-        <label>Reminder Message</label>
-        <div><textarea name="content" placeholder="Type your reminder message here!"></textarea></div>
+    <form id="options" role="form">
+
+      <div class="checkbox">
+        <label><input type="checkbox" name="isActivated" checked> Activate Reminder</label>
       </div>
 
-      <div name="daysofweek">
-        <input type="checkbox" name="day" value="0">Sun<br>        
-        <input type="checkbox" name="day" value="1">Mon<br>
-        <input type="checkbox" name="day" value="2">Tue<br>
-        <input type="checkbox" name="day" value="3">Wed<br>
-        <input type="checkbox" name="day" value="4">Thu<br>
-        <input type="checkbox" name="day" value="5">Fri<br>
-        <input type="checkbox" name="day" value="6">Sat<br>
+      <div>
+        Display a notification every
+        <input type="number" name="frequencyMin"> minute(s) and
+        <input type="number" name="frequencySec"> second(s)
+      </div>
+
+      <div class="form-group">
+        <label>Reminder Message:</label>
+        <textarea class="form-control" rows="5" name="content" placeholder="Type your reminder message here!"></textarea>
+      </div>
+
+      <div class="checkbox" name="daysofweek">
+        <label><input type="checkbox" name="day" value="0">Sun</label>      
+        <label><input type="checkbox" name="day" value="1">Mon</label> 
+        <label><input type="checkbox" name="day" value="2">Tue</label> 
+        <label><input type="checkbox" name="day" value="3">Wed</label> 
+        <label><input type="checkbox" name="day" value="4">Thu</label> 
+        <label><input type="checkbox" name="day" value="5">Fri</label> 
+        <label><input type="checkbox" name="day" value="6">Sat</label> 
       </div>
 
       <div name="startTime">
@@ -44,5 +56,6 @@
       </div>
 
     </form>
-  </body>
+  </div>
+</body>
 </html>
