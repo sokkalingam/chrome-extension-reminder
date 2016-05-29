@@ -16,19 +16,8 @@
     <form id="options">
       <input type="checkbox" name="isActivated" checked>
       Display a notification every
-      <select name="frequency">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>10</option>
-        <option>15</option>
-        <option>20</option>
-        <option>25</option>
-        <option>30</option>
-      </select>
-      minute(s).
+      <input type="number" name="frequencyMin"> minute(s) and
+      <input type="number" name="frequencySec"> second(s)
       <div>
         <label>Reminder Message</label>
         <div><textarea name="content" placeholder="Type your reminder message here!"></textarea></div>
