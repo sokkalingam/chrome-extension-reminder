@@ -38,6 +38,9 @@ window.addEventListener('load', function() {
     for (cb of checkboxes)
       if (cb.checked)
         daysofweek.push(cb.value);
+    // if no days are set, then all days are set
+    if (daysofweek.length == 0)
+      daysofweek = [0, 1, 2, 3, 4, 5, 6];
     localStorage.daysofweek = daysofweek;
   });
 
