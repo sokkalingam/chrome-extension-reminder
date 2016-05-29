@@ -12,7 +12,8 @@ window.addEventListener('load', function() {
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
                                          // The display activation.
-  options.frequency.value = localStorage.frequency;
+  options.frequencyMin.value = localStorage.frequencyMin;
+  options.frequencySec.value = localStorage.frequencySec;
                                          // The display frequency, in minutes.
   options.content.value = localStorage.content;
 
@@ -24,9 +25,11 @@ window.addEventListener('load', function() {
     ghost(!options.isActivated.checked);
   };
 
-  options.frequency.onchange = function() {
-    localStorage.frequency = options.frequency.value;
-  };
+  var frequencies = $("[name^='frequency']");
+  frequencies.change(function() {
+    localStorage.frequencyMin = options.frequencyMin.value;
+    localStorage.frequencySec = options.frequencySec.value;
+  });
 
   options.content.onchange = function() {
     localStorage.content = options.content.value;
