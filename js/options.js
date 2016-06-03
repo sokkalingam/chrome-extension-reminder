@@ -10,6 +10,12 @@ window.addEventListener('load', function() {
   loadTime();
 
   $(options.isActivated).bootstrapSwitch();
+  $('#startTime').timepicker();
+  $('#endTime').timepicker();
+
+  $("#startTime").change(function() {
+    console.log('value: ' + this.value);
+  });
 
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
