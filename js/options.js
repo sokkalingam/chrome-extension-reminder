@@ -2,12 +2,14 @@
 function ghost(isDeactivated) {
   options.style.color = isDeactivated ? 'graytext' : 'black';
                                               // The label color.
-  options.frequency.disabled = isDeactivated; // The control manipulability.
+  options.isActivated.disabled = isDeactivated; // The control manipulability.
 }
 
 window.addEventListener('load', function() {
 
   loadTime();
+
+  $(options.isActivated).bootstrapSwitch();
 
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);

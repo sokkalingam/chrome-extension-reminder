@@ -5,9 +5,12 @@
   <title>Break Reminder App!</title>
   <link href="../css/style.css" rel="stylesheet" type="text/css">
   <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+
+  <script src="../js/jquery-1.12.2.min.js"></script>
   <script src="../js/options.js"></script>
   <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery-1.12.2.min.js"></script>
+  <script src="../js/bootstrap-switch.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -17,32 +20,34 @@
       <p>You will never forget to take a break again!</p> 
     </div>
 
-    <h2>Options</h2>
     <form id="options" role="form">
 
       <div class="checkbox">
-        <label><input type="checkbox" name="isActivated" checked> Activate Reminder</label>
-      </div>
-
-      <div>
-        Display a notification every
-        <input type="number" name="frequencyMin"> minute(s) and
-        <input type="number" name="frequencySec"> second(s)
+        <h4>Activate Reminder</h4><input type="checkbox" name="isActivated" checked></input>
       </div>
 
       <div class="form-group">
-        <label>Reminder Message:</label>
+        <h4>
+          Display notification for every
+          <input type="number" name="frequencyMin"> minute(s) and
+          <input type="number" name="frequencySec"> second(s)
+        </h4>
+      </div>
+
+      <div class="form-group">
+        <h4>Reminder Message:</h4>
         <textarea class="form-control" rows="5" name="content" placeholder="Type your reminder message here!"></textarea>
       </div>
 
       <div class="checkbox" name="daysofweek">
-        <label><input type="checkbox" name="day" value="0">Sun</label>      
-        <label><input type="checkbox" name="day" value="1">Mon</label> 
-        <label><input type="checkbox" name="day" value="2">Tue</label> 
-        <label><input type="checkbox" name="day" value="3">Wed</label> 
-        <label><input type="checkbox" name="day" value="4">Thu</label> 
-        <label><input type="checkbox" name="day" value="5">Fri</label> 
-        <label><input type="checkbox" name="day" value="6">Sat</label> 
+        <h4>Display notification for the following days of week</h4>
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="0">Sun</input></label>     
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="1">Mon</input></label>
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="2">Tue</input></label>
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="3">Wed</input></label>
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="4">Thu</input></label>
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="5">Fri</input></label>
+          <label class="checkbox-inline"><input type="checkbox" name="day" value="6">Sat</input></label>
       </div>
 
       <div name="startTime">
