@@ -20,10 +20,12 @@ function show() {
   localStorage.isInitialized = true; // The option initialization.
   localStorage.content = 'No message has been set! Set your reminder message in options page';
   localStorage.daysofweek = [0,1,2,3,4,5,6];
-  localStorage.startHr = 0;
+  localStorage.startHr = 12;
   localStorage.startMin = 0;
-  localStorage.endHr = 24;
-  localStorage.endMin = 60;
+  localStorage.startMdn = 'am';
+  localStorage.endHr = 11;
+  localStorage.endMin = 59;
+  localStorage.endMdn = 'pm';
 // }
 
 // Test for notification support.
@@ -45,14 +47,24 @@ if (window.Notification) {
   }, 1000);
 }
 
-function withinWorkingHours(includedDays = [0,1,2,3,4,5,6], startHr = 0, startMin = 0, endHr = 24, endMin = 60) {
-  var date = new Date();
-  var dayOfWeek = date.getDay();
-  var hr = date.getHours();
-  var min = date.getMinutes();
-    if ((includedDays.indexOf(dayOfWeek) !== -1) &&
-      ((endHr > hr) || ((endHr == hr) && (endMin >= min))) &&
-      ((hr > startHr) || ((hr == startHr) && (min >= startMin))))
-      return true;
-    return false;
+function withinWorkingHours(includedDays = [0,1,2,3,4,5,6], startHr = 0, startMin = 0, startMdn, endHr = 24, endMin = 60, endMdn) {
+  var date        = new Date();
+  var dayOfWeek   = date.getDay();
+  var currentTime = calculateTime(date.getHours(), date.getMinutes());
+  var startTime   = calculateTime(startHr, startMin, startMdn);
+  var endTime     = calculateTime(endHr, endMin, endMdn);
+    
+  if ((includedDays.indexOf(dayOfWeek) > -1) &&
+      (startTime < currentTime) && (currentTime < endTime))
+    return true;
+  return false;
+}
+
+function calculateTime(hr, min, mdn='am') {
+  var time = 0;
+  time += parseInt(hr) * 60;
+  time += parseInt(min);
+  if (mdn === 'pm')
+    time += 12 * 60;
+  return time; 
 }

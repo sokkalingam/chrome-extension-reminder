@@ -13,10 +13,6 @@ window.addEventListener('load', function() {
   $('#startTime').timepicker();
   $('#endTime').timepicker();
 
-  $("#startTime").change(function() {
-    console.log('value: ' + this.value);
-  });
-
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
                                          // The display activation.
@@ -70,6 +66,18 @@ window.addEventListener('load', function() {
   options.endMin.onchange = function() {
     localStorage.endMin = options.endMin.value;
   };
+
+  $('#startTime').timepicker().on('changeTime.timepicker', function(e) {
+    localStorage.startHr = e.time.hours;
+    localStorage.startMin = e.time.minutes;
+    localStorage.startMdn = e.time.meridian;
+  });
+
+  $('#endTime').timepicker().on('changeTime.timepicker', function(e) {
+    localStorage.endHr = e.time.hours;
+    localStorage.endMin = e.time.minutes;
+    localStorage.endMdn = e.time.meridian;
+  });
 
 });
 
