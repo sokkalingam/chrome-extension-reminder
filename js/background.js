@@ -39,8 +39,9 @@ if (window.Notification) {
     interval++;
     if (JSON.parse(localStorage.isActivated) &&
         interval >= freq &&
-        withinWorkingHours(localStorage.daysofweek, localStorage.startHr,
-            localStorage.startMin, localStorage.endHr, localStorage.endMin)) {
+        withinWorkingHours(localStorage.daysofweek,
+          localStorage.startHr, localStorage.startMin, localStorage.startMdn,
+          localStorage.endHr, localStorage.endMin, localStorage.endMdn)) {
       show();
       interval = 0;
     }
@@ -62,9 +63,12 @@ function withinWorkingHours(includedDays = [0,1,2,3,4,5,6], startHr = 0, startMi
 
 function calculateTime(hr, min, mdn='am') {
   var time = 0;
-  time += parseInt(hr) * 60;
-  time += parseInt(min);
   if (mdn === 'pm')
     time += 12 * 60;
+  else if (mdn === 'am' && parseInt(hr) === 12)
+    hr = 0;
+  time += parseInt(hr) * 60;
+  time += parseInt(min);
+  
   return time; 
 }
