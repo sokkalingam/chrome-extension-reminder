@@ -51,22 +51,6 @@ window.addEventListener('load', function() {
     localStorage.daysofweek = daysofweek;
   });
 
-  options.startHr.onchange = function() {
-    localStorage.startHr = options.startHr.value;
-  };
-
-  options.startMin.onchange = function() {
-    localStorage.startMin = options.startMin.value;
-  };
-
-  options.endHr.onchange = function() {
-    localStorage.endHr = options.endHr.value;
-  };
-
-  options.endMin.onchange = function() {
-    localStorage.endMin = options.endMin.value;
-  };
-
   $('#startTime').timepicker().on('changeTime.timepicker', function(e) {
     localStorage.startHr = e.time.hours;
     localStorage.startMin = e.time.minutes;
