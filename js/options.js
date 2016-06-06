@@ -7,9 +7,12 @@ function ghost(isDeactivated) {
 
 window.addEventListener('load', function() {
 
-  loadTime();
-
   $(options.isActivated).bootstrapSwitch();
+  $('#startTime').timepicker();
+  $('#endTime').timepicker();
+
+  $('#startTime').timepicker('setTime', '12:00 AM');
+  $('#endTime')  .timepicker('setTime', '11:59 PM');
 
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
@@ -49,33 +52,16 @@ window.addEventListener('load', function() {
     localStorage.daysofweek = daysofweek;
   });
 
-  options.startHr.onchange = function() {
-    localStorage.startHr = options.startHr.value;
-  };
+  $('#startTime').timepicker().on('changeTime.timepicker', function(e) {
+    localStorage.startHr = e.time.hours;
+    localStorage.startMin = e.time.minutes;
+    localStorage.startMdn = e.time.meridian;
+  });
 
-  options.startMin.onchange = function() {
-    localStorage.startMin = options.startMin.value;
-  };
-
-  options.endHr.onchange = function() {
-    localStorage.endHr = options.endHr.value;
-  };
-
-  options.endMin.onchange = function() {
-    localStorage.endMin = options.endMin.value;
-  };
+  $('#endTime').timepicker().on('changeTime.timepicker', function(e) {
+    localStorage.endHr = e.time.hours;
+    localStorage.endMin = e.time.minutes;
+    localStorage.endMdn = e.time.meridian;
+  });
 
 });
-
-function loadTime() {
-  for (var i = 0; i <= 60; i++) {
-
-    if (i <= 24) {
-      $("select[name='startHr']").append("<option value='" + i + "'>" + i + "</option>");
-      $("select[name='endHr']").append("<option value='" + i + "'>" + i + "</option>");  
-    }
-
-    $("select[name='startMin']").append("<option value='" + i + "'>" + i + "</option>");
-    $("select[name='endMin']").append("<option value='" + i + "'>" + i + "</option>");
-  }
-}
