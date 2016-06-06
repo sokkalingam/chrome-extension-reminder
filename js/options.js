@@ -7,11 +7,12 @@ function ghost(isDeactivated) {
 
 window.addEventListener('load', function() {
 
-  loadTime();
-
   $(options.isActivated).bootstrapSwitch();
   $('#startTime').timepicker();
   $('#endTime').timepicker();
+
+  $('#startTime').timepicker('setTime', '12:00 AM');
+  $('#endTime')  .timepicker('setTime', '11:59 PM');
 
   // Initialize the option controls.
   options.isActivated.checked = JSON.parse(localStorage.isActivated);
@@ -64,16 +65,3 @@ window.addEventListener('load', function() {
   });
 
 });
-
-function loadTime() {
-  for (var i = 0; i <= 60; i++) {
-
-    if (i <= 24) {
-      $("select[name='startHr']").append("<option value='" + i + "'>" + i + "</option>");
-      $("select[name='endHr']").append("<option value='" + i + "'>" + i + "</option>");  
-    }
-
-    $("select[name='startMin']").append("<option value='" + i + "'>" + i + "</option>");
-    $("select[name='endMin']").append("<option value='" + i + "'>" + i + "</option>");
-  }
-}

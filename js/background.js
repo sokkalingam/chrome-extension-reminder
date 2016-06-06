@@ -31,11 +31,11 @@ function show() {
 // Test for notification support.
 if (window.Notification) {
   // While activated, show notifications at the display frequency.
-  // if (JSON.parse(localStorage.isActivated)) { show(); }
+  if (JSON.parse(localStorage.isActivated)) { show(); }
   var interval = 0; // The display interval, in seconds.
   setInterval(function() {
     var freq = parseInt(localStorage.frequencyMin * 60) + parseInt(localStorage.frequencySec);
-    console.log(freq);
+    console.log('Frequency: ' + freq + ' seconds, Interval: ' + interval + ' seconds');
     interval++;
     if (JSON.parse(localStorage.isActivated) &&
         interval >= freq &&
@@ -54,9 +54,11 @@ function withinWorkingHours(includedDays = [0,1,2,3,4,5,6], startHr = 0, startMi
   var currentTime = calculateTime(date.getHours(), date.getMinutes());
   var startTime   = calculateTime(startHr, startMin, startMdn);
   var endTime     = calculateTime(endHr, endMin, endMdn);
+
+  console.log('currentTime: ' + currentTime + ', startTime: ' + startTime + ', endTime: ' + endTime);
     
   if ((includedDays.indexOf(dayOfWeek) > -1) &&
-      (startTime < currentTime) && (currentTime < endTime))
+      (startTime <= currentTime) && (currentTime <= endTime))
     return true;
   return false;
 }
@@ -69,6 +71,6 @@ function calculateTime(hr, min, mdn='am') {
     hr = 0;
   time += parseInt(hr) * 60;
   time += parseInt(min);
-  
+
   return time; 
 }
